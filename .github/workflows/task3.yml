@@ -47,7 +47,8 @@ jobs:
                     password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
             - name: build  docker image
               run: |
-                TAG=${{github.sha}}
+                TAG=${{ github.sha }}
+                echo "TAG=$TAG"
                 docker build -t ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG .
             - name: push the docker image
               run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG
