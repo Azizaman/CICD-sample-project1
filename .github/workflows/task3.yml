@@ -48,10 +48,11 @@ jobs:
             - name: build  docker image
               run: |
                 TAG=${{ github.sha }}
+                IMAGE=${{secrets.DOCKER_HUB_USERNAME}}/task3-app
                 echo "TAG=$TAG"
-                docker build -t ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG .
+                docker build -t $IMAGE:$TAG .
             - name: push the docker image
-              run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG
+              run: docker push $IMAGE:$TAG
 
 
 
