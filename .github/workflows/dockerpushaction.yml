@@ -15,7 +15,7 @@ jobs:
                     password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
             - name: Build and Push Docker image (latest commit SHA)
               run: |
-                IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/my-app
+                IMAGE=${{ secrets.DOCKER_HUB_USERNAME }}/my-app
                 TAG=${{ github.sha }}
 
                 docker build -t $IMAGE:$TAG .
