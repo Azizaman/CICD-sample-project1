@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # 4️⃣ Install dependencies
-RUN npm Install
+RUN npm install
 RUN npm install --save-dev jest
 RUN npm test
 
