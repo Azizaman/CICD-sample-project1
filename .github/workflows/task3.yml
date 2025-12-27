@@ -45,11 +45,13 @@ jobs:
               with:
                     username: ${{secrets.DOCKER_HUB_USERNAME}}
                     password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
-            - name: build  docker image
+            - name: Set image variables
               run: |
-                TAG=${{ github.sha }}
-                IMAGE=${{secrets.DOCKER_HUB_USERNAME}}/task3-app
-                echo "TAG=$TAG"
+               echo "TAG=${{ github.sha }}" >> $GITHUB_ENV
+               echo "IMAGE=${{ secrets.DOCKER_HUB_USERNAME }}/task3-app" >> $GITHUB_ENV
+
+            - name: build  docker image
+              run: 
                 docker build -t $IMAGE:$TAG .
             - name: push the docker image
               run: docker push $IMAGE:$TAG
