@@ -30,8 +30,24 @@ jobs:
               run: npm install --save-dev jest
             - name: run the tests
               run: npm test
-            - name: run the code
-              run: node index.js
+            - name: lint the code
+              run: npx eslint --init
+            - name: run the lint
+              run: npm run lint
+
+# CD usually does:
+
+# Build Docker image
+
+# Push image
+
+# Deploy to server / cloud
+
+# 📌 CD should be controlled and restricted
+# via protected branches or manual approvals
+# 📌 CD never runs tests
+        steps:
+            -name: 
 
 
 

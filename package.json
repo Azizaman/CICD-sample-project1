@@ -4,7 +4,8 @@
   "description": "Small project for GitHub Actions CI practice",
   "main": "index.js",
   "scripts": {
-    "test": "node ./node_modules/jest/bin/jest.js"
+    "test": "node ./node_modules/jest/bin/jest.js",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "jest": "^29.7.0"
