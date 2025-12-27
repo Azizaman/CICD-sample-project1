@@ -34,6 +34,28 @@ jobs:
               run: npx eslint --init
             - name: run the lint
               run: npm run lint
+    deploy:
+        name: CD workflow to push docker image to hub
+        runs-on: ubuntu-latest
+        needs: build
+        # 🔒 CD runs ONLY on main branch
+        if: github.ref == 'refs/heads/main'
+        steps:
+            - name: checkout the code 
+              uses: actions/checkout@v4
+            - name: Login with the docker hub
+              uses: docker/login-action@v2
+              with:
+                    username: ${{secrets.DOCKER_HUB_USERNAME}}
+                    password: ${{secrets.DOCKER_HUB_ACCESS_TOKEN}}
+            - name: build  docker image
+              run: |
+                TAG=${{github.sha}}
+                docker build -t ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG .
+            - name: push the docker image
+              run: docker push ${{secrets.DOCKER_HUB_USERNAME}}/task3-app:$TAG
+
+
 
 # CD usually does:
 
@@ -46,8 +68,7 @@ jobs:
 # 📌 CD should be controlled and restricted
 # via protected branches or manual approvals
 # 📌 CD never runs tests
-        steps:
-            -name: 
+    
 
 
 
