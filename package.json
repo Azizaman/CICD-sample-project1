@@ -4,7 +4,7 @@
   "description": "Small project for GitHub Actions CI practice",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "node ./node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
     "jest": "^29.7.0"
