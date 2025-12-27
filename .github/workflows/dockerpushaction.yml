@@ -1,0 +1,22 @@
+name: CI docker image push to the hub
+
+on:
+    workflow_dispatch:
+jobs: 
+    docker-image-push:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout the code
+              uses: actions/checkout@v4
+            - name: log in to the docker hub
+              uses: docker/login-action@v2
+              with: 
+                    username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                    password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+            - name: Build and Push Docker image (latest commit SHA)
+              run: |
+                IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/my-app
+                TAG=${{ github.sha }}
+
+                docker build -t $IMAGE:$TAG .
+                docker push $IMAGE:$TAG 
