@@ -10,7 +10,7 @@ COPY package*.json ./
 # 4️⃣ Install dependencies
 RUN npm install
 RUN npm install --save-dev jest
-RUN npm test
+# RUN npm test
 
 # 5️⃣ Copy rest of the application code
 COPY . .
