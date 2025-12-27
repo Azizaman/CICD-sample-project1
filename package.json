@@ -1,0 +1,12 @@
+{
+  "name": "ci-basic-node",
+  "version": "1.0.0",
+  "description": "Small project for GitHub Actions CI practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
