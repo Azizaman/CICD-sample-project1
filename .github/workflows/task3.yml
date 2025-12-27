@@ -1,0 +1,35 @@
+# CI usually does:
+
+#1) Install dependencies
+
+#2) Build the app
+
+#3) Run tests
+
+#4) Lint / checks
+
+# 📌 CI never deploys
+
+
+name: Task 3 CI workflow
+
+on:
+    workflow_dispatch:
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            #checkout the code
+            - name: checkout the code
+              uses: actions/checkout@v4
+            - name: set up the node js envirnment
+              uses: actions/setup-node@v3
+            - name: install dependecies
+              run: npm install
+            - name: run the tests
+              run: npm test
+            - name: run the code
+              run: node index.js
+
+
+
